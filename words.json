@@ -1,8 +1,18 @@
 {
   "positive-words": [
     "China",
+    "People's Republic of China",
+    "Peoples Republic of China",
     "All Hail",
     "CCP",
+    "Collectivism",
+    "Collectivist",
+    "Communist",
+    "Socialism",
+    "Socialist",
+    "Socialistic",
+    "Communistic",
+    "Commune",
     "Glorious Leader",
     "Xi Jinping",
     "Mao Zedong",
@@ -21,6 +31,9 @@
     "U.S.A.",
     "U.S.A",
     "U.S",
+    "US.A",
+    "U.SA.",
+    "USA.",
     "US",
     "USA",
     "The West",
@@ -43,7 +56,13 @@
     "Freedom of Speech",
     "Freedom",
     "Rights",
+    "Amendment",
+    "Rebellion",
+    "Revolution",
+    "Rebellion",
+    "Resistance",
     "Democracy",
+    "Republic of China",
     "Soviet Union",
     "USSR",
     "CCCP",
@@ -52,6 +71,8 @@
     "NATO",
     "North Atlantic Treaty Organization",
     "Winnie the Pooh",
-    "Taiwan"
+    "Taiwan",
+    "Tibet",
+    ""
   ]
 }
