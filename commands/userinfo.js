@@ -7,7 +7,7 @@ module.exports = {
 		.setDescription('Replies with a user\'s social credit, representing their faith and trust in the all-powerful china and glorious CCP.'),
   async execute(interaction) {
 
-    const userSc = sc.findOne({ where: { id: message.author.id } });
+    const userSc = sc.findOne({ where: { id: interaction.author.id } });
     
     let response = new Discord.MessageEmbed()
       .setTitle('Social Credit Score')
@@ -15,7 +15,13 @@ module.exports = {
       .addFields(
         {
           name: 'User: ',
-          value: message.author.username,
+          value: interaction.author.username,
+          inline: true
+        },
+        
+        { 
+          name: '\u200b',
+          value: '\u200b',
           inline: true
         },
         
@@ -26,6 +32,6 @@ module.exports = {
         }
       )      
 
-    message.reply(response);
+    interaction.reply(response);
   },
 };
