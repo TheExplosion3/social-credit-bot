@@ -21,7 +21,9 @@
     "Communist Manifesto",
     "John Cena",
     "Cena",
-    "Glorious"
+    "Glorious",
+    "Leader",
+    "Xiaomi"
   ],
   "negative-words": [
     "America",
@@ -73,7 +75,6 @@
     "North Atlantic Treaty Organization",
     "Winnie the Pooh",
     "Taiwan",
-    "Tibet",
-    ""
+    "Tibet"
   ]
 }
