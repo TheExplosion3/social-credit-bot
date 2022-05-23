@@ -23,6 +23,7 @@ async function observer() {
   let arr = [];
   
   collector.on('collect', m => {
+    console.log('${m.content} was received from user ID ${m.content.author.id}')
     arr.push(m.content.author.id);
   });
 
@@ -41,8 +42,11 @@ async function observer() {
       for(let w in str) {
         if(!words.has(w)) {
           str.splice(idx, idx + 1);
+          idx--;
         }
-        idx++;
+        else {
+          idx++;
+        }
       }
     }
     for(let m in str) {

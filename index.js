@@ -16,7 +16,7 @@ const sc = require('./sc.js');
 const app = express();
 const port = 3000;
 
-app.get('/', (req, res) => res.send('Social Credit Bot Server Running...'));
+app.get('/', (req, res) => res.send('<strong>Social Credit Bot Server Running...</strong>'));
 
 app.listen(port, () => console.log(`Listening at http://localhost:${port}`));
 
