@@ -1,4 +1,4 @@
-const {ScChange } = require('../functions.js');
+const { ScChange } = require('../functions.js');
 
 module.exports = {
 	name: 'ready',

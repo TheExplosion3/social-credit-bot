@@ -10,6 +10,8 @@ const Sequelize = require('sequelize');
 const express = require('express');
 const sc = require('./sc.js');
 
+//---------------------------------------------------------------------------\\
+
 // webserver code
 const app = express();
 const port = 3000;
@@ -17,6 +19,8 @@ const port = 3000;
 app.get('/', (req, res) => res.send('Social Credit Bot Server Running...'));
 
 app.listen(port, () => console.log(`Listening at http://localhost:${port}`));
+
+//----------------------------------------------------------------------------\\
 
 // Create a new client instance
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
@@ -32,19 +36,6 @@ for(const file of commandFiles) {
 	// With the key as the command name and the value as the exported module
 	client.commands.set(command.data.name, command);
 }
-
-const sequelize = new Sequelize('database', 'user', 'password', {
-	host: 'localhost',
-	dialect: 'sqlite',
-	logging: false,
-	storage: 'database.sqlite',
-});
-
-
-client.once('ready', () => {
-  sc.sync();
-});
-
 
 const eventsPath = path.join(__dirname, 'events');
 const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'));
