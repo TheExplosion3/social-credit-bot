@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const myId = process.env['myid'];
-const wJson = require ('./words.json');
+const wJson = require ('./json/words.json');
 const sc = require('./sc.js');
 const words = JSON.parse(JSON.stringify(wJson));
 

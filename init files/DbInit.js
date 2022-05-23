@@ -9,7 +9,7 @@ const sequelize = new Sequelize('username', 'id', 'social-credit', {
 	storage: 'database.sqlite',
 });
 
-const sc = require('./sc.js')(sequelize, sequelize.DataTypes);
+const sc = require('../sc.js')(sequelize, sequelize.DataTypes);
 
 const force = process.argv.includes('--force') || process.argv.includes('-f');
 
