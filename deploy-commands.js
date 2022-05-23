@@ -7,7 +7,7 @@ const token = process.env['token']
 const commands = [
 	new SlashCommandBuilder().setName('ping').setDescription('Replies with pong!'),
 	new SlashCommandBuilder().setName('userinfo').setDescription('Replies with user\' a users social credit'),
-  new SlashCommandBuilder().setName('initialize').setDescription('Initializes the bot\'s database for CCP use.')
+  new SlashCommandBuilder().setName('initialize').setDescription('Initializes the bot\'s database for CCP use. (Only usable by creator)')
 ]
 	.map(command => command.toJSON());
 

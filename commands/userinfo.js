@@ -1,13 +1,21 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { clientId, guildId } = require('../config.json');
+const sc = require('../sc.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('userinfo')
-		.setDescription('Replies with a user\'s social credit, representing their faith and trust in the all-powerful china and glorious CCP.'),
+		.setDescription('Replies with a user\'s social credit'),
   async execute(interaction) {
 
-    const userSc = sc.findOne({ where: { id: interaction.author.id } });
+    let name = interaction.options.getString('name');
+    if(name == null) {
+      const userSc = sc.findOne({ where: { id: interaction.author.id } });  
+      name = interaction.author.username();
+    }
+    else {
+      const userSc = sc.findOne({ where: { name: name } });
+    }
     
     let response = new Discord.MessageEmbed()
       .setTitle('Social Credit Score')
@@ -15,7 +23,7 @@ module.exports = {
       .addFields(
         {
           name: 'User: ',
-          value: interaction.author.username,
+          value: name,
           inline: true
         },
         

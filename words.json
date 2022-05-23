@@ -1,5 +1,5 @@
 {
-  "positive-words": [
+  "positivewords" : [
     "China",
     "People's Republic of China",
     "Peoples Republic of China",
@@ -24,7 +24,7 @@
     "Leader",
     "Xiaomi"
   ],
-  "negative-words": [
+  "negativewords" : [
     "America",
     "United States",
     "United States of America",
@@ -91,7 +91,6 @@
     "smart": 5,
     "bussin": -50,
     "clownin": -20,
-    "clownin": -10,
     "unintelligent": -5,
     "poor": -5,
     "unsmart": -5,
@@ -102,6 +101,9 @@
     "failing": -5,
     "fail": -5,
     "capitalist": -5,
-    "pigs": 10
-  }
+    "pigs": 10,
+    "commie": -10,
+    "bastard": -10
+  },
+  "wordscore": 5
 }

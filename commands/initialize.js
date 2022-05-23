@@ -1,6 +1,7 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { clientId, guildId} = require('../config.json');
 const { ScChange } = require('../functions.js');
+const sc = require('../sc.js');
 const myId = process.env['myid'];
 
 module.exports = {
