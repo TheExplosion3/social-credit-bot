@@ -1,7 +1,5 @@
 // imports
 const { Client, Collection, Intents } = require('discord.js');
-const token = process.env['token'];
-const myId = process.env['myid'];
 const fs = require('node:fs');
 const path = require('node:path');
 const { REST } = require('@discordjs/rest');
@@ -9,6 +7,8 @@ const { Routes } = require('discord-api-types/v9');
 const Sequelize = require('sequelize');
 const express = require('express');
 const sc = require('./sc.js');
+const token = process.env['token'];
+const myId = process.env['myid'];
 
 //---------------------------------------------------------------------------\\
 
@@ -36,6 +36,8 @@ for(const file of commandFiles) {
 	// With the key as the command name and the value as the exported module
 	client.commands.set(command.data.name, command);
 }
+
+//----------------------------------------------------------------------------\\
 
 const eventsPath = path.join(__dirname, 'events');
 const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'));

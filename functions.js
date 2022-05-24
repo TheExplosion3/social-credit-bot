@@ -15,7 +15,9 @@ function sc_change(p_or_m, sc_change_amount, id) {
   }
 }
 
-async function observer() {
+//----------------------------------------------------------------------------\\
+
+function observer() {
   
   const filter = m => m.content.includes('');
   const collector = interaction.channel.createMessageCollector({ filter, time: 15000 });

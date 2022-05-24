@@ -9,18 +9,19 @@ module.exports = {
 		.setName('initialize')
 		.setDescription('Initializes all new civilians into the Glorious Social Credit System.'),
   async execute(interaction) {
+    
     let currentNewMembers = [];
     let newUserCount = 0;
-    const guild = interaction.client.guilds.cache.get(guildId);
-    
+    const guild = interaction.client.guilds.resolve(guildId);
+        
     console.log(guild.members.fetch());
     
     guild.members.fetch().then(members => {   
       
-      console.log(guild.members.fetch());
+      console.log("entered" + guild.members.fetch());
       
       let tag;
-          // Loop through every members
+        // Loop through every members
         members.forEach(member => {
           tag = sc.findOne({ where: { id: member } });
           console.log(tag);
@@ -30,11 +31,11 @@ module.exports = {
           }
         });
       });
-    if (interaction.user.id === myId) {
+    if(interaction.user.id === myId) {
       currentNewMembers.forEach(member => {
         const scId = sc.findOne({ where: { id: member } });
         if(scId) {
-           try {
+          try {
             const tag = sc.create({
             name: client.users.cache.find(member => user.id === 'USER-ID'),
             id: member,
@@ -42,7 +43,7 @@ module.exports = {
           });
         }
           catch (error) {
-            if (error.name === 'SequelizeUniqueConstraintError') {
+            if(error.name === 'SequelizeUniqueConstraintError') {
               console.log("Not a new user, silently ignoring.");
             }
           }
