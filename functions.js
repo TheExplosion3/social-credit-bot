@@ -23,6 +23,10 @@ function observer() {
   const collector = interaction.channel.createMessageCollector({ filter, time: 15000 });
   
   let arr = [];
+  //regexes lol
+  const posregex = /\b((John )?Cena)+|\b(Glorious)|\b(People'?s ?Republic ?Of ?China)|\b(All ?Hail)|\b(P\.?R\.?O\.?C\.?)|\b(C\.?C\.?P\.?)|\b(Collectivis(tic|t|m){1})|\b(Communis(tic|t|m){1})|\b(Mao( Zedong)?)|\b(Socialis(tic|t|m){1})|\b(Xi( ?Jinping)?)|\b(Little ?Red ?Book)|\b(Communist ?Manifesto)|\b(Xiaomi)|\b(Leader)/gi
+  const negregex = /(placeholder)/gi
+  const modifieregex = /\b(Glorious)|\b(Great)|\b(All ?-? ?Powerful)\b|(Wonderful)|\b((Unweak(e(r|n(ed|ings?){1}){1}){0,1})|(Weak(lings?|e(ned|r|nings?){1}|ness(es)?){0,1}))|\b((Un)?Smart(ness)?)|\b((Un)?Intellig(ence|ent)?)|\b((Un)?Wiser?)|\b(Power(ful|less))|\b(Stupid(ity|ness)?)|\b(Horrible(ness)?)|\b(Idiot(ic|s)?)|\b(Bussing?)|\b(Clown(ing?)?)|\b(Poor(ness|er)?)|\b(Commie)|\b(Fail(ings?|ures?){0,1})|\b(Los(t|ing|ers?){1})/gi
   
   collector.on('collect', m => {
     console.log('${m.content} was received from user ID ${m.content.author.id}')
@@ -30,45 +34,50 @@ function observer() {
   });
 
   collector.on('end', collected => {
-    let str = [];
-    let ctr = 0;
     let idx = 0;
+    let idxtwo = 0;
     let previous_was_positive = false;
 
     for(let m in collected) {
 
+      let mfull = m;
+
       ctr++;
       idx = 0;
-      
-      str = m.split(' ')
-      for(let w in str) {
-        if(!words.has(w)) {
-          str.splice(idx, idx + 1);
-          idx--;
+
+      // checks for positive words and modifiers, changes score accordingly.
+      while(true) {
+        idx = m.search(posregex)
+        if(idx === -1) {
+          break;
         }
         else {
-          idx++;
+          sc_change(true, words.wordscore, interaction.author.id)
+          m = m.slice(idx, m.length)
+          if(idx + 1 >= m.length) {
+            break;
+          }
+          else {
+            idx++;
+          }
         }
       }
-    }
-    for(let m in str) {
-      if(words.positivewords.has(m)) {
-        sc_change(true, words.wordscore, str[ctr]);
-        previous_was_positive = true;
-      }
-      else if(words.negativewords.has(m)) {
-        sc_change(false, words.wordscore, str[ctr]);
-        previous_was_positive = false;
-      }
-      else if(words.modifiers.has(m)) {
-        if(previous_was_positive === false) { 
-          const temp = words["modifiers"][m] * -1;
-          sc_change(true, temp, str[ctr]);
+      // checks for negative words and modifiers, changes score accordingly.
+      while(true) {
+        idx = m.search(negregex)
+        if(idx === -1) {
+          break;
         }
-        sc_change(true, words["modifiers"][m], str[ctr]);
-      }
-      else {
-        console.log('Failed to find word in list, continuing.');
+        else {
+          sc_change(false, words.wordscore, interaction.author.id)
+          m = m.slice(idx, m.length)
+          if(idx + 1 >= m.length) {
+            break;
+          }
+          else {
+            idx++;
+          }
+        }
       }
     }
   });        
