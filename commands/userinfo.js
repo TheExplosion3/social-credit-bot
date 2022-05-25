@@ -31,7 +31,7 @@ module.exports = {
     let maoresponse;
     
     if(name == null) {
-      const userSc = sc.findOne({ where: { id: interaction.author.id } });  
+      const userSc = sc.findOne({ where: { id: interaction.member.id } });  
       name = interaction.author.username();
     }
     else {

@@ -12,36 +12,46 @@ module.exports = {
     
     let currentNewMembers = [];
     let newUserCount = 0;
-    const guild = interaction.client.guilds.resolve(guildId);
-        
-    console.log(guild.members.fetch());
-    
-    guild.members.fetch().then(members => {   
+
+    interaction.guild.members.fetch(console.log)
+    interaction.guild.members.fetch().then(members => {   
+
+      const memberIDs = members.map((member) => member.id);
       
-      console.log("entered" + guild.members.fetch());
+      console.log(members);
+      console.log('entered')
       
       let tag;
         // Loop through every members
-        members.forEach(member => {
-          tag = sc.findOne({ where: { id: member } });
-          console.log(tag);
-          if(!tag) {  
-            currentNewMembers.push(member);
-            newUserCount++;
-          }
-        });
+      memberIDs.forEach(member => {
+        
+        console.log('Member: ' + member);
+        
+        tag = sc.findOne({ where: { id: member } });
+        console.log(tag);
+        if(!tag) {  
+          currentNewMembers.push(member);
+          newUserCount++;
+        }
       });
+    });
+    
+
+    // console.log("entered")
+    // console.log(currentNewMembers)
+    
     if(interaction.user.id === myId) {
+      
       currentNewMembers.forEach(member => {
         const scId = sc.findOne({ where: { id: member } });
         if(scId) {
           try {
             const tag = sc.create({
-            name: client.users.cache.find(member => user.id === 'USER-ID'),
-            id: member,
-            social_credit: 10
-          });
-        }
+              name: client.users.cache.find(member => user.id === 'USER-ID'),
+              id: member,
+              social_credit: 10
+            });
+          }
           catch (error) {
             if(error.name === 'SequelizeUniqueConstraintError') {
               console.log("Not a new user, silently ignoring.");
