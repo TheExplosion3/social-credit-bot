@@ -46,6 +46,7 @@
     "The West",
     "West",
     "Western",
+    "Westerners",
     "Trade",
     "Tianenmen Square",
     "Tianenmen Square Incident of 1989",
@@ -66,7 +67,6 @@
     "Amendment",
     "Rebellion",
     "Revolution",
-    "Rebellion",
     "Resistance",
     "Democracy",
     "Republic of China",
@@ -79,7 +79,8 @@
     "North Atlantic Treaty Organization",
     "Winnie the Pooh",
     "Taiwan",
-    "Tibet"
+    "Tibet",
+    "Class"
   ],
   "modifiers" : {
     "great": 5,
@@ -95,18 +96,18 @@
     "smart": 5,
     "bussin": -50,
     "clown": -20,
-    "unintelligent": -5,
     "poor": -5,
-    "unsmart": -5,
-    "unwise": -5,
     "wise": 5,
     "believe": -5,
     "lost": -5,
     "fail": -5,
-    "capitalist": -5,
+    "fault": -5,
     "pigs": 10,
+    "rats": 10,
     "commie": -10,
-    "bastard": -10
+    "bastard": -10,
+    "lower": -10,
+    "upper": 10,
   },
   "wordscore": 5
 }

@@ -23,10 +23,10 @@ function observer() {
   const collector = interaction.channel.createMessageCollector({ filter, time: 15000 });
   
   let arr = [];
-  //regexes lol
+  // these are literally black magic do not edit (regex is hard)
   const posregex = /\b((John )?Cena)+|\b(Glorious)|\b(People'?s ?Republic ?Of ?China)|\b(All ?Hail)|\b(P\.?R\.?O\.?C\.?)|\b(C\.?C\.?P\.?)|\b(Collectivis(tic|t|m){1})|\b(Communis(tic|t|m){1})|\b(Mao( Zedong)?)|\b(Socialis(tic|t|m){1})|\b(Xi( ?Jinping)?)|\b(Little ?Red ?Book)|\b(Communist ?Manifesto)|\b(Xiaomi)|\b(Leader)/gi
-  const negregex = /(placeholder)/gi
-  const modifieregex = /\b(Glorious)|\b(Great)|\b(All ?-? ?Powerful)\b|(Wonderful)|\b((Unweak(e(r|n(ed|ings?){1}){1}){0,1})|(Weak(lings?|e(ned|r|nings?){1}|ness(es)?){0,1}))|\b((Un)?Smart(ness)?)|\b((Un)?Intellig(ence|ent)?)|\b((Un)?Wiser?)|\b(Power(ful|less))|\b(Stupid(ity|ness)?)|\b(Horrible(ness)?)|\b(Idiot(ic|s)?)|\b(Bussing?)|\b(Clown(ing?)?)|\b(Poor(ness|er)?)|\b(Commie)|\b(Fail(ings?|ures?){0,1})|\b(Los(t|ing|ers?){1})/gi
+  const negregex = /\b((?! ?of)(\3 ?Of ?\4)|((The)? ?United ?States)|(Americas?))|\b(U\.?\.S\.?A?\.?)|\b((The)? ?West(ern(ers)?)?)|\b(Trade(r)?s?)|\b(Tianenmen( ?Square( ?Incident(( ?Of)? ?1989| ?1989)?)?)?)|\b(Capital(ist(ivism)?|ism))|\b((Jos(ef|eph))? ?Stalin(is(t|m)?)?)|\b(((C|K)arl)? ?Marx(is(t|m)?)?)|\b(Free((ness|dom)?( ?of ?(Speech|Rights))?)?)|\b(Re(bel(lions?)?|volution(ar(ies|ys?)|s)?|sistances?))|\b(Democra(t|tic(ness)?|c(ies|ys?)))|\b((Democratic)? ?Republic ?Of ?China)|\b(Taiwan(ese(ness)?|ness)?)|\b(Tibet(ans?|ese(ness)?|ness))|\b(U\.?S\.?S\.?R\.?|C\.?C\.?C\.?P|R\.?S\.?F\.?S\.?R\.?|E\.?U\.?|N\.?A\.?T\.?O\.?)|\b(European Union)|\b((The)?Soviet ?Union)|\b(North ?Atlantic ?Treaty ?Organization)|\b(Winnie ?the ?Pooh)|\b(Class(es|ist(ness|s)?)?)/gi
+  const modifieregex = /\\b(Glor((y|ious(ness)?)){1})|\b(Great(s|less(ness)?|ness)?)|\b((All ?-? ?)?(Power((less|ful)?(ness)?)))\b|\b(Wonderful)|\b((Unweak(e(r|n(ed|ings?){1}){1})?)|(Weak(lings?|e(ned|r|nings?){1}|ness(es)?)?))|\b((Un)?Smart(ness)?)|\b((Un)?Intellig(ences?|ents?)?)|\b((Un)?Wise(r|ly|ness)?)|\b(Stupids?(ity|ness)?)|\b(Horrible(s|ness)?)|\b(Idiot(ic|s)?)|\b(Bussing?s?)|\b(Clown(s|ing?)?)|\b(Poor(ness|er)?)|\b(Fail(s|ed|ings?|ures?)?)|\b(Los(s(es)?|t|ing|ers?){1})|\b(Belie(fs?|v(ing|es?)))|\b(Fault(s|ed)?)|\b(Pig(ness|s)?)|\b(Commie(s|ness)?)|\b(Bastard(ness|s)?)|\b(Lower(eds?|ness|s)?)|\b(Upper(s|ness|eds?)?)/gi
   
   collector.on('collect', m => {
     console.log('${m.content} was received from user ID ${m.content.author.id}')
