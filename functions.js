@@ -23,6 +23,7 @@ function observer() {
   const collector = interaction.channel.createMessageCollector({ filter, time: 15000 });
   
   let arr = [];
+  let msgid_creditchange = new Map();
   // these are literally black magic do not edit (regex is hard)
   const posregex = /\b((John )?Cena)+|\b(Glorious)|\b(People'?s ?Republic ?Of ?China)|\b(All ?Hail)|\b(P\.?R\.?O\.?C\.?)|\b(C\.?C\.?P\.?)|\b(Collectivis(tic|t|m){1})|\b(Communis(tic|t|m){1})|\b(Mao( Zedong)?)|\b(Socialis(tic|t|m){1})|\b(Xi( ?Jinping)?)|\b(Little ?Red ?Book)|\b(Communist ?Manifesto)|\b(Xiaomi)|\b(Leader)/gi
   const negregex = /\b((?! ?of)(\3 ?Of ?\4)|((The)? ?United ?States)|(Americas?))|\b(U\.?\.S\.?A?\.?)|\b((The)? ?West(ern(ers)?)?)|\b(Trade(r)?s?)|\b(Tianenmen( ?Square( ?Incident(( ?Of)? ?1989| ?1989)?)?)?)|\b(Capital(ist(ivism)?|ism))|\b((Jos(ef|eph))? ?Stalin(is(t|m)?)?)|\b(((C|K)arl)? ?Marx(is(t|m)?)?)|\b(Free((ness|dom)?( ?of ?(Speech|Rights))?)?)|\b(Re(bel(lions?)?|volution(ar(ies|ys?)|s)?|sistances?))|\b(Democra(t|tic(ness)?|c(ies|ys?)))|\b((Democratic)? ?Republic ?Of ?China)|\b(Taiwan(ese(ness)?|ness)?)|\b(Tibet(ans?|ese(ness)?|ness))|\b(U\.?S\.?S\.?R\.?|C\.?C\.?C\.?P|R\.?S\.?F\.?S\.?R\.?|E\.?U\.?|N\.?A\.?T\.?O\.?)|\b(European Union)|\b((The)?Soviet ?Union)|\b(North ?Atlantic ?Treaty ?Organization)|\b(Winnie ?the ?Pooh)|\b(Class(es|ist(ness|s)?)?)/gi
@@ -38,47 +39,49 @@ function observer() {
     let idxtwo = 0;
     let previous_was_positive = false;
 
+    if(collected === null) {
+      continue bypass;
+    }
+
     for(let m in collected) {
 
-      let mfull = m;
-
-      ctr++;
-      idx = 0;
-
-      // checks for positive words and modifiers, changes score accordingly.
+      const modstring = m;
+      let currentarr;
+      
+      msgid_creditchange.set(arr[idx], (m.match(posregex).length - 1) * words.wordscore)
       while(true) {
-        idx = m.search(posregex)
-        if(idx === -1) {
-          break;
+        currentarr = m.match(posregex);
+        modstring = m.slice(idxtwo, m.search(posregex));
+        if(modstring.match(negregex) !== null) {
+          
+          msgid_credit.set(arr[idx], msgid_credit.get(idx) - (modstring.match(negregex).length - 1))
+         
+          if(modstring.match(modifieregex) !== null) {     
+            let newVal;
+            currentarr = modstring.match(modifieregex);
+            currentarr.forEach(str => {
+              if(words.modifiers.has(str) {
+                newVal += words.modifiers.str; 
+              }
+            });
+            msgid_credit.set(arr[idx], msgid_credit.get(idx)) + newVal)
+          }
+        }
+        else if(modstring.match(modifieregex)) {
+          if(true) {
+            
+          }
         }
         else {
-          sc_change(true, words.wordscore, interaction.author.id)
-          m = m.slice(idx, m.length)
-          if(idx + 1 >= m.length) {
-            break;
-          }
-          else {
-            idx++;
-          }
-        }
-      }
-      // checks for negative words and modifiers, changes score accordingly.
-      while(true) {
-        idx = m.search(negregex)
-        if(idx === -1) {
+          idx++;
+          idxtwo = 0;
           break;
         }
-        else {
-          sc_change(false, words.wordscore, interaction.author.id)
-          m = m.slice(idx, m.length)
-          if(idx + 1 >= m.length) {
-            break;
-          }
-          else {
-            idx++;
-          }
-        }
       }
+      
+      msgid_creditchange.set(arr[idx], ((m.match(negregex).length - 1) * words.wordscore) * -1)
     }
+    bypass:
+      break bypass;
   });        
 }
