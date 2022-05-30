@@ -6,12 +6,14 @@ module.exports = (sequelize) => {
   	username: {
   		type: DataTypes.STRING,
   		unique: true,
+      defaultValue: "placeholder",
   	},
   	id: {
       type: DataTypes.INTEGER,
       unique: true,
       primaryKey: true,
       allowNull: false,
+      defaultValue: 000000000000000000,
     },
   	social_credit: {
   		type: DataTypes.INTEGER,
