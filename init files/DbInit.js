@@ -6,7 +6,7 @@ const sequelize = new Sequelize('username', 'id', 'social-credit', {
 	host: 'localhost',
 	dialect: 'sqlite',
 	logging: false,
-	storage: 'database.sqlite',
+	storage: '../database.sqlite',
 });
 
 const sc = require('../sc.js')(sequelize, sequelize.DataTypes);
