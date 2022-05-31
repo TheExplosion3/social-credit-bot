@@ -16,7 +16,7 @@ const myId = process.env['myid'];
 const app = express();
 const port = 3000;
 
-app.get('/', (req, res) => res.send('<strong>Social Credit Bot Server Running...</strong>'));
+app.get('/', (req, res) => res.send(`<p style="color:8650ac;"><strong>Social Credit Bot Server Running on Port ${port}</strong></p>`));
 
 app.listen(port, () => console.log(`Listening at http://localhost:${port}`));
 
@@ -52,6 +52,8 @@ for (const file of eventFiles) {
 		client.on(event.name, (...args) => event.execute(...args));
 	}
 }
+
+//----------------------------------------------------------------------------\\
 
 // Login to Discord with your client's token
 client.login(token);
