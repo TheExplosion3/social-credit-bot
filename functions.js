@@ -39,48 +39,47 @@ function observer() {
     let idxtwo = 0;
     let previous_was_positive = false;
 
-    if(collected === null) {
-      continue bypass;
-    }
-
-    for(let m in collected) {
-
-      const modstring = m;
-      let currentarr;
-      
-      msgid_creditchange.set(arr[idx], (m.match(posregex).length - 1) * words.wordscore)
-      while(true) {
-        currentarr = m.match(posregex);
-        modstring = m.slice(idxtwo, m.search(posregex));
-        if(modstring.match(negregex) !== null) {
-          
-          msgid_credit.set(arr[idx], msgid_credit.get(idx) - (modstring.match(negregex).length - 1))
-         
-          if(modstring.match(modifieregex) !== null) {     
-            let newVal;
-            currentarr = modstring.match(modifieregex);
-            currentarr.forEach(str => {
-              if(words.modifiers.has(str) {
-                newVal += words.modifiers.str; 
-              }
-            });
-            msgid_credit.set(arr[idx], msgid_credit.get(idx)) + newVal)
-          }
-        }
-        else if(modstring.match(modifieregex)) {
-          if(true) {
+    if(collected !== null) {
+      for(let m in collected) {
+  
+        const modstring = m;
+        let currentarr;
+        
+        msgid_creditchange.set(arr[idx], (m.match(posregex).length - 1) * words.wordscore)
+        while(true) {
+          currentarr = m.match(posregex);
+          modstring = m.slice(idxtwo, m.search(posregex));
+          if(modstring.match(negregex) !== null) {
             
+            msgid_credit.set(arr[idx], msgid_credit.get(idx) - (modstring.match(negregex).length - 1))
+           
+            if(modstring.match(modifieregex) !== null) {     
+              let newVal = 0;
+              currentarr = modstring.match(modifieregex);
+              currentarr.forEach(str => {
+                if(words.modifiers.has(str)) {
+                  newVal += words.modifiers.str; 
+                }
+              });
+              msgid_credit.set(arr[idx], msgid_credit.get(idx) + newVal);
+            }
+          }
+          else if(modstring.match(modifieregex) == true) {
+            if(true) {
+              console.log(temp);
+            }
+          }
+          else {
+            idx++;
+            idxtwo = 0;
+            break;
           }
         }
-        else {
-          idx++;
-          idxtwo = 0;
-          break;
-        }
+        
+        msgid_creditchange.set(arr[idx], ((m.match(negregex).length - 1) * words.wordscore) * -1)
       }
-      
-      msgid_creditchange.set(arr[idx], ((m.match(negregex).length - 1) * words.wordscore) * -1)
     }
+    
     bypass:
       break bypass;
   });        
