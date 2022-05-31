@@ -1,6 +1,5 @@
 const sequelize = require('sequelize');
 const { DataTypes } = require('sequelize');
-// lol i dont know why this doesnt work
 
 module.exports = (sequelize) => {
   return sequelize.define('social-credit', {
