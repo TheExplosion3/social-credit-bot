@@ -18,7 +18,7 @@ module.exports = (sequelize) => {
       defaultValue: 0xde0b6b3a763ffff,
     },
   	social_credit: {
-  		type: DataTypes.INTEGER,
+  		type: DataTypes.BIGINT,
   		defaultValue: 10,
   		allowNull: false,
   	},
