@@ -35,7 +35,7 @@ module.exports = {
     let maoResponse = 'test';
     console.log(interaction.user.avatarURL)
     name = 'test';
-    // try {
+    try {
       response = new MessageEmbed()
         .setTitle('Social Credit Score')
         .setColor('DE2910')
@@ -69,10 +69,10 @@ module.exports = {
           }
         )  
       interaction.reply({embeds: [response]});
-    //   }
-    // catch(error) {
-    //   console.log('error encountered in embed creation, passing.')
-    //   interaction.reply({ content: 'You are missing an account in the glorious Social Credit system. Contact an admin to reinitialize the system, so you can be included in the greatness of the CCP.', ephemeral: true });
-    // }
+      }
+    catch(error) {
+      console.log('error encountered in embed creation, passing.')
+      interaction.reply({ content: 'An error has occured comrade! Contact an admin for fixing this horrible issue.', ephemeral: true });
+    }
   },
 };
