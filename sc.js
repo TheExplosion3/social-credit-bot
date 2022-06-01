@@ -2,7 +2,7 @@ const sequelize = require('sequelize');
 const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
-  return sequelize.define('social-credit', {
+  return sequelize.define('socialcredit', {
   	username: {
   		type: DataTypes.TEXT,
   		unique: true,
@@ -16,7 +16,7 @@ module.exports = (sequelize) => {
       allowNull: false,
       defaultValue: 0xde0b6b3a763ffff,
     },
-  	social_credit: {
+  	socialcredit: {
   		type: DataTypes.BIGINT,
   		defaultValue: 10,
   		allowNull: false,
@@ -24,5 +24,6 @@ module.exports = (sequelize) => {
   },
   {
     timestamps : false,
+    freezeTableName : true,
   });
 };

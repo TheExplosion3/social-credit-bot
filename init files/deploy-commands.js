@@ -3,13 +3,19 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
-const { clientId, guildId } = require('../config.json');
+const { clientId, guildId } = require('../json/config.json');
 const token = process.env['token']
 
 const commands = [
-	new SlashCommandBuilder().setName('ping').setDescription('Replies with pong!'),
-	new SlashCommandBuilder().setName('userinfo').setDescription('Replies with user\' a users social credit'),
-  new SlashCommandBuilder().setName('initialize').setDescription('Initializes the bot\'s database for CCP use. (Only usable by creator)')
+	new SlashCommandBuilder()
+    .setName('ping') 
+    .setDescription('Replies with pong!'),
+	new SlashCommandBuilder()
+    .setName('userinfo')
+    .setDescription('Replies with user\' a users social credit'),
+  new SlashCommandBuilder()
+    .setName('initialize')
+    .setDescription('Initializes the bot\'s database for CCP use. (Only usable by creator)')
 ]
 	.map(command => command.toJSON());
 

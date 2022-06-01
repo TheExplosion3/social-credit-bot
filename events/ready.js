@@ -1,5 +1,3 @@
-const { ScChange } = require('../functions.js');
-
 module.exports = {
 	name: 'ready',
 	once: true,

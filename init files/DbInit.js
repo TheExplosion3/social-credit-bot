@@ -2,11 +2,11 @@
 
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize('username', 'id', 'social-credit', {
+const sequelize = new Sequelize('username', 'id', 'socialcredit', {
 	host: 'localhost',
 	dialect: 'sqlite',
 	logging: false,
-	storage: '../database.sqlite',
+	storage: 'db/database.sqlite',
 });
 
 const sc = require('../sc.js')(sequelize, sequelize.DataTypes);
