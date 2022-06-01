@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const { clientId, guildId, botId } = require('../json/config.json');
+const { botId } = require('../json/config.json');
 const { sc_change } = require('../functions.js');
 const Sequelize = require('sequelize');
 const myId = process.env['myid'];
@@ -67,5 +67,4 @@ module.exports = {
       sc_change(false, 10, interaction.user.id)
     }
   }
-
 };

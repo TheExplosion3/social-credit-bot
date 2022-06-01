@@ -1,6 +1,5 @@
 const { MessageEmbed } = require('discord.js')
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const { clientId, guildId } = require('../json/config.json');
 const Sequelize = require('sequelize');
 
 const sequelize = new Sequelize('username', 'id', 'socialcredit', {
