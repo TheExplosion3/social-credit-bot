@@ -4,6 +4,7 @@ const { sc_change } = require('../functions.js');
 const Sequelize = require('sequelize');
 const myId = process.env['myid'];
 
+
 const sequelize = new Sequelize('username', 'id', 'socialcredit', {
 	host: 'localhost',
 	dialect: 'sqlite',
@@ -21,51 +22,68 @@ module.exports = {
     
     let currentNewMembers = [];
     let newUserCount = 0;
-    let ctr = 0;
+    let isAdmin = true;
 
     await interaction.guild.members.fetch().then(members => {   
 
       const memberIDs = members.map((member) => member.id);
       let sqlid;
+      let complete = [];
+
       
-        // Loop through every members
+        // this can be simplified probably to make it more efficient but idk how
       memberIDs.forEach(member => {
         
         sqlid = sc.findOne({ where: { id: member } });
-        
-        if(sqlid !== null || sqlid !== undefined) {  
-          currentNewMembers.push(member);
-          newUserCount++;      
-        }
-        
+    
+        sqlid.then(response => {
+          sqlid = response;
+          if(sqlid === null || sqlid === undefined) {  
+            currentNewMembers.push(member);
+          }
+          newUserCount = currentNewMembers.length;
+          if(interaction.user.id === myId) {
+            let name;
+            currentNewMembers.forEach(id => {
+              let scId = sc.findOne({ where: { id: id } });
+              scId.then(response => {
+                scId = response
+                members.forEach(member => {
+                if(member.id === id) {
+                  name = member.user.tag;
+                  }
+                })
+                if((!scId && scId !== botId) && complete.includes(id) === false) {
+                  try {
+                    sc.create({
+                      username: name,
+                      id: id,
+                      socialcredit: 10
+                    });               
+                  }
+                  catch (error) {
+                    if(error.name === 'SequelizeUniqueConstraintError') {
+                      console.log('Not a new user, silently ignoring.');
+                    }
+                  }
+                  complete.push(id)
+                }
+              });   
+            });           
+          }
+          else {
+            isAdmin = false;
+          }
+        });
       });
     });
-
-    if(interaction.user.id === myId) {
-      currentNewMembers.forEach(id => {
-        const scId = sc.findOne({ where: { id: id } });
-        const name = interaction.client.users.cache.find(members => members.username == 'USERNAME')
-        if(!scId && scId !== botId) {
-          try {
-            sc.create({
-              username: name,
-              id: id,
-              socialcredit: 10
-            });
-          }
-          catch (error) {
-            if(error.name === 'SequelizeUniqueConstraintError') {
-              console.log('Not a new user, silently ignoring.');
-            }
-          }
-        }
-      })
-      await interaction.reply(newUserCount + " new civilians added.")
-    }
-    else {
+    if(!isAdmin) {
       await interaction.reply('Admin Priviliges Not Found, Deducting Social Credit...');
       sc_change(false, 10, interaction.user.id)
     }
+    console.log(newUserCount)
+    await interaction.reply(newUserCount + " new civilians added.")
+    
   }
 
 };
