@@ -22,7 +22,7 @@ phrases.set(3, "The CCP honors you, my friend.")
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('userinfo')
-		.setDescription('Replies with a user\'s social credit'),
+		.setDescription('Replies with a user\'s social credit.'),
   async execute(interaction) {
     const avatarUrl = interaction.user.displayAvatarURL()
     let name;
@@ -71,7 +71,7 @@ module.exports = {
       }
     catch(error) {
       console.log('error encountered in embed creation, passing.')
-      interaction.reply({ content: 'An error has occured comrade! Contact an admin for fixing this horrible issue.', ephemeral: true });
+      interaction.reply({ content: 'An error has occured comrade! Contact an admin for fixing this horrible issue, delaying the glorious progress of the CCP.', ephemeral: true });
     }
   },
 };

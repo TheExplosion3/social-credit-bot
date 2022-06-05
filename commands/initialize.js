@@ -31,8 +31,8 @@ module.exports = {
       let complete = [];
 
       
-        // this can be simplified probably to make it more efficient but idk how
-      memberIDs.forEach(member => {
+        // this can be simplified probably to make it more efficient but idk how, right now its either O(n^2) or O(n log n), but yeah. tbh it could also be O(2^n) due to how its iterating so poorly, for some reason it chooses to iterate in a really scuffed way, through every ID even if its already been used, but i dont know how to fix that due to my required use of promises. i don't know how to use them very well yet, so yeah.
+      for(const member of memberIDs) {
         
         sqlid = sc.findOne({ where: { id: member } });
     
@@ -44,15 +44,15 @@ module.exports = {
           newUserCount = currentNewMembers.length;
           if(interaction.user.id === myId) {
             let name;
-            currentNewMembers.forEach(id => {
+            for(const id of currentNewMembers) {
               let scId = sc.findOne({ where: { id: id } });
               scId.then(response => {
-                scId = response
-                members.forEach(member => {
-                if(member.id === id) {
-                  name = member.user.tag;
+                scId = response;
+                for (const member of members) {
+                  if(member.id === id) {
+                    name = member.user.tag;
                   }
-                })
+                }
                 if((!scId && scId !== botId) && complete.includes(id) === false) {
                   try {
                     sc.create({
@@ -66,22 +66,22 @@ module.exports = {
                       console.log('Not a new user, silently ignoring.');
                     }
                   }
-                  complete.push(id)
+                  complete.push(id);
                 }
               });   
-            });           
+            };           
           }
           else {
             isAdmin = false;
           }
         });
-      });
+      };
     });
     if(!isAdmin) {
       await interaction.reply('Admin Priviliges Not Found, Deducting Social Credit...');
-      sc_change(false, 10, interaction.user.id)
+      sc_change(false, 10, interaction.user.id);
     }
-    console.log(newUserCount)
+    console.log(newUserCount);
     await interaction.reply(newUserCount + " new civilians added.")
     
   }
