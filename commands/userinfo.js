@@ -24,6 +24,7 @@ module.exports = {
 		.setName('userinfo')
 		.setDescription('Replies with a user\'s social credit'),
   async execute(interaction) {
+    const avatarUrl = interaction.user.displayAvatarURL()
     let name;
     let userSc = sc.findOne({
       where: { 
@@ -32,7 +33,6 @@ module.exports = {
     })
     userSc = 'temp';
     let maoResponse = 'test';
-    console.log(interaction.user.avatarURL)
     name = 'test';
     try {
       response = new MessageEmbed()
@@ -41,7 +41,7 @@ module.exports = {
         .setDescription('Here is your social credit score, straight from the glorious CCP, my friend!')
         // image to mao portrait lmao
         .setThumbnail('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTCQ239dDx27JAGoiCRZIKhFLhwPaI1CIi5gaETen9N2bzal2IU3xPaDpfzAA41ixZFDA:https://upload.wikimedia.org/wikipedia/commons/e/e8/Mao_Zedong_portrait.jpg&usqp=CAU')
-        .setImage(interaction.user.avatarURL)
+        .setImage(avatarUrl)
         .addFields(
           {
             name: 'User: ',
