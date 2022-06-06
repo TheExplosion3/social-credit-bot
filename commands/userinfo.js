@@ -52,7 +52,7 @@ module.exports = {
         .setTitle('Social Credit Score')
         .setColor('DE2910')
         .setDescription(`Here is your social credit score, straight from the glorious CCP, ${name}!`)
-        // image to mao portrait lmao
+        // image link to mao portrait lmao
         .setThumbnail('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTCQ239dDx27JAGoiCRZIKhFLhwPaI1CIi5gaETen9N2bzal2IU3xPaDpfzAA41ixZFDA:https://upload.wikimedia.org/wikipedia/commons/e/e8/Mao_Zedong_portrait.jpg&usqp=CAU')
         .setImage(avatarUrl)
         .addFields(
