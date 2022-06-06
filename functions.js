@@ -1,4 +1,5 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
+const Sequelize = require('sequelize');
 const wJson = require ('./json/words.json');
 const words = JSON.parse(JSON.stringify(wJson));
 
@@ -9,7 +10,7 @@ const sequelize = new Sequelize('username', 'id', 'socialcredit', {
 	storage: 'db/database.sqlite',
 });
 
-const sc = require('../sc.js')(sequelize);
+const sc = require('./sc.js')(sequelize);
 
 //----------------------------------------------------------------------------\\
 
@@ -58,7 +59,7 @@ const modifierregex = /\\b(Glor((y|ious(ness)?)){1})|\b(Great(s|less(ness)?|ness
 
 //----------------------------------------------------------------------------\\
 
-async function observer() {
+function observer() {
   
   const filter = msg => msg.content.includes('');
   const collector = interaction.channel.createMessageCollector({ filter, time: 15000 });
@@ -100,7 +101,7 @@ async function observer() {
               currentarr = modstring.match(modifierregex);
               newVal = Math.round(expval ** (striterator(newVal, currentarr, ctr)/(1 - Math.LOG10E)));
               if(newVal > 500) {
-                // 142.927 is the y val of 500 for the exp, + 500 raises it by 500. im using ln because i dont feel like using change of base equation, so yeah.
+                // 142.927 is the y val of 500 for the exp, + 500 raises it by 500. im using ln because i dont feel like using change of base equation, so yeah. it also just works well enough.
                 newVal = Math.round(Math.log(newVal - logInt) + raiser);
               }
             }
@@ -111,7 +112,6 @@ async function observer() {
             if(lastWasPositive === true) {
               newVal = Math.round(expval ** (striterator(newVal, currentarr, ctr)/(1 - Math.LOG10E)));
               if(newVal > 500) {
-                // 142.927 is the y val of 500 for the exp, + 500 raises it by 500. im using ln because i dont feel like using change of base equation, so yeah.
                 newVal = Math.round(Math.log(newVal - logInt) + raiser);
               }
             }

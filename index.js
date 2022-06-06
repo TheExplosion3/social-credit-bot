@@ -4,11 +4,10 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
+const sc = require('./sc.js')
 const Sequelize = require('sequelize');
 const express = require('express');
-const sc = require('./sc.js');
 const token = process.env['token'];
-const myId = process.env['myid'];
 
 //---------------------------------------------------------------------------\\
 
@@ -55,5 +54,5 @@ for (const file of eventFiles) {
 
 //----------------------------------------------------------------------------\\
 
-// Login to Discord with your client's token
+// Login to Discord with token
 client.login(token);

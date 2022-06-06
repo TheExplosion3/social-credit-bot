@@ -14,8 +14,10 @@ const sc = require('../sc.js')(sequelize);
 const phrases = new Map([
   [0, 'Your execution date will be soon, traitor.'],
   [1, 'Your social credit is too low! Your execution date will be soon if you don\'t do better, my friend!'],
-  [2, 'Good job my friend! You have a good social credit score!'],
-  [3, 'The CCP honors you, my friend.']
+  [2, 'My friend, you\'re doing alright, but you can do better! The CCP believes in you!'],
+  [3, 'Good job my friend! You have a good social credit score!'],
+  [4, 'The CCP honors you, my friend.'],
+  [5, 'You are an example for all of us, the CCP strives to be as great as you.']
 ])
 
 module.exports = {
@@ -34,17 +36,23 @@ module.exports = {
 
     let maoResponse;
 
-    if(userSc >= 0) {
+    if(userSc >= 0x0) {
       maoResponse = phrases.get(0);
     }
-    else if(userSc >= 100) {
+    else if(userSc >= 0xa) {
       maoResponse = phrases.get(1);
     }
-    else if(userSc >= 1000) {
+    else if(userSc >= 0x3e8) {
       maoResponse = phrases.get(2);
     }
-    else {
+    else if(userSc >= 0x2710) {
       maoResponse = phrases.get(3);
+    }
+    else if(userSc >= 0x88b8) {
+      maoResponse = phrases.get(4);
+    }
+    else {
+      maoResponse = phrases.get(5);
     }
 
     try {
