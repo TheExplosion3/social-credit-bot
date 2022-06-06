@@ -98,7 +98,7 @@ async function observer() {
             // if modifiers are found, foreach through all of them and change social credit accordingly.
             if(modstring.match(modifierregex) !== null) {     
               currentarr = modstring.match(modifierregex);
-              newVal = Math.round(expval ** striterator(newVal, currentarr, ctr)/(1 - Math.LOG10E));
+              newVal = Math.round(expval ** (striterator(newVal, currentarr, ctr)/(1 - Math.LOG10E)));
               if(newVal > 500) {
                 // 142.927 is the y val of 500 for the exp, + 500 raises it by 500. im using ln because i dont feel like using change of base equation, so yeah.
                 newVal = Math.round(Math.log(newVal - logInt) + raiser);
@@ -109,7 +109,7 @@ async function observer() {
           else if(modstring.match(modifierregex) == true) {
             currentarr = modstring.match(modifierregex);
             if(lastWasPositive === true) {
-              newVal = Math.round(expval ** striterator(newVal, currentarr, ctr)/(1 - Math.LOG10E));
+              newVal = Math.round(expval ** (striterator(newVal, currentarr, ctr)/(1 - Math.LOG10E)));
               if(newVal > 500) {
                 // 142.927 is the y val of 500 for the exp, + 500 raises it by 500. im using ln because i dont feel like using change of base equation, so yeah.
                 newVal = Math.round(Math.log(newVal - logInt) + raiser);
