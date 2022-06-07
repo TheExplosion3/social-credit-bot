@@ -15,7 +15,7 @@ const token = process.env['token'];
 const app = express();
 const port = 3000;
 
-app.get('/', (req, res) => res.send(`<p style="color:8650ac;"><strong>Social Credit Bot Server Running on Port ${port}</strong></p>`));
+app.get('/', (req, res) => res.send(`<p style="color:8650ac;"><strong>Social Credit Bot Server Running on Port ${port}</strong></p>`))
 
 app.listen(port, () => console.log(`Listening at http://localhost:${port}`));
 

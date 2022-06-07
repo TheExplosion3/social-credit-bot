@@ -101,7 +101,11 @@ function observer() {
               currentarr = modstring.match(modifierregex);
               newVal = Math.round(expval ** (striterator(newVal, currentarr, ctr)/(1 - Math.LOG10E)));
               if(newVal > 500) {
-                // 142.927 is the y val of 500 for the exp, + 500 raises it by 500. im using ln because i dont feel like using change of base equation, so yeah. it also just works well enough.
+                /* 
+                  142.927 is the y val of 500 for the exp, + 500 raises it by 500. im using ln because i dont feel like using change of base equation, so yeah. it also just works well enough.
+                  equations: y1 = rnd((1.04^x)/1-log e)
+                            y2 = rnd(ln(y1 - 142.927) + 500)
+                */
                 newVal = Math.round(Math.log(newVal - logInt) + raiser);
               }
             }
