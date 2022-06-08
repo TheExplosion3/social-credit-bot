@@ -18,6 +18,6 @@ then
 
 fi
 
-node ~/social-credit-bot-haha/init\ files/dbInit.js --f
+node ~/social-credit-bot-haha/init\ files/dbinit.js --f
 echo -e "\nprocess complete.\n"
 # a simple script to initialize the database, or reset it fully if wanted. much faster than typing out the actual command, especially with wiping the database itself.
