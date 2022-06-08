@@ -1,4 +1,4 @@
-// use with node in the shell to reinitialize the tables, if already made previously use node DbInit.js --f or --force
+// use with node in the shell to reinitialize the tables, if already made previously use node dbInit.js --f or --force
 
 const Sequelize = require('sequelize');
 

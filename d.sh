@@ -7,6 +7,7 @@ then
   
   cd ~/social-credit-bot-haha/db
   > database.sqlite
+  cd ~/social-credit-bot-haha
 
   echo "db was reset successfully"
 elif [[ $input == 'b' || $input == 'B' ]]
@@ -17,6 +18,6 @@ then
 
 fi
 
-node init\ files/dbInit.js --f
+node ~/social-credit-bot-haha/init\ files/dbInit.js --f
 echo -e "\nprocess complete.\n"
 # a simple script to initialize the database, or reset it fully if wanted. much faster than typing out the actual command, especially with wiping the database itself.

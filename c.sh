@@ -7,5 +7,5 @@ then
   echo -e "\nprocess canceled\n"
   exit
 fi
-node init\ files/deploycommands.js
+node ~/social-credit-bot-haha/init\ files/deploycommands.js
 echo -e "process complete\n"
