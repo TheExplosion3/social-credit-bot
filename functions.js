@@ -14,8 +14,9 @@ const sc = require('./sc.js')(sequelize);
 
 //----------------------------------------------------------------------------\\
 
+
 // changes the amount of social credit in the database, according to whether or not its pos or neg via pm, its change value as amt, and the id in the database as id.
-export function sc_change(pm, amt, id) {
+function sc_change(pm, amt, id) {
   
   const scamt =  sc.findOne({ where: { id: id } });
 
@@ -61,7 +62,7 @@ function striterator(input, arr, ctr) {
 
 //----------------------------------------------------------------------------\\
 
-export async function observer() {
+async function observer() {
   
   const filter = msg => msg.content.includes('');
   const collector = interaction.channel.createMessageCollector({ filter, time: 15000 });
