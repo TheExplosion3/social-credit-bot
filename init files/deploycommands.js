@@ -1,4 +1,5 @@
 // Use this with node to redeploy commands, and add any new ones made.
+// update: use c.sh, it is a faster and much easier process.
 
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { REST } = require('@discordjs/rest');
@@ -8,7 +9,7 @@ const token = process.env['token'];
 
 const commands = [
 	new SlashCommandBuilder()
-    .setName('randomeme') 
+    .setName('randomeme')
     .setDescription('Replies with a random state approved meme, straight from the Glorious CCP'),
 	new SlashCommandBuilder()
     .setName('userinfo')

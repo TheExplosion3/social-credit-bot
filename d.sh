@@ -4,7 +4,7 @@ read input
 if [[ $input == 'y' || $input == 'Y' ]]
 then
   echo -e "\nreseting db..."
-  
+
   cd ~/social-credit-bot-haha/db
   > database.sqlite
   cd ~/social-credit-bot-haha

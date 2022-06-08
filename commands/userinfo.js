@@ -1,6 +1,8 @@
-const { MessageEmbed } = require('discord.js')
+const baseLinks = require('../json/memelinks.json');
+const { MessageEmbed } = require('discord.js');
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const Sequelize = require('sequelize');
+const links = JSON.parse(JSON.stringify(baseLinks))
 
 const sequelize = new Sequelize('username', 'id', 'socialcredit', {
 	host: 'localhost',
@@ -27,14 +29,14 @@ module.exports = {
 		.setName('userinfo')
 		.setDescription('Replies with a user\'s social credit.'),
   async execute(interaction) {
-    
+
     const avatarUrl = interaction.user.displayAvatarURL();
     let maoResponse;
     let name = interaction.user.username;
     let userSc = sc.findOne({
-      where: { 
+      where: {
         id: interaction.user.id
-      } 
+      }
     }).then(_result => {
 
       // dunno why i put this in hex, i sorta just felt like it.
@@ -69,7 +71,7 @@ module.exports = {
           .setColor('DE2910')
           .setDescription(`Here is your social credit score, straight from the glorious CCP, ${name}!`)
           // image link to mao portrait lmao
-          .setThumbnail('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTCQ239dDx27JAGoiCRZIKhFLhwPaI1CIi5gaETen9N2bzal2IU3xPaDpfzAA41ixZFDA:https://upload.wikimedia.org/wikipedia/commons/e/e8/Mao_Zedong_portrait.jpg&usqp=CAU')
+          .setThumbnail(memeLinks.mao)
           .setImage(avatarUrl)
           .addFields(
             {
@@ -77,25 +79,25 @@ module.exports = {
               value: name,
               inline: true
             },
-            
-            { 
+
+            {
               name: '\u200b',
               value: '\u200b',
               inline: true
             },
-            
+
             {
               name: 'Social Credit: ',
               value: userSc,
               inline: true
             },
-            
+
             {
               name: 'A Message from Mao: ',
               value: maoResponse,
               inline: true
             }
-          )  
+          )
         interaction.reply({embeds: [response]});
         }
       catch(error) {

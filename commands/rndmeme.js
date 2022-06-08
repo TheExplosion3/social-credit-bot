@@ -1,7 +1,7 @@
-const baseLinks = require('../json/memelinks.json')
-const { MessageEmbed } = require('discord.js')
+const baseLinks = require('../json/memelinks.json');
+const { MessageEmbed } = require('discord.js');
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const links = JSON.parse(JSON.stringify(baseLinks))
+const links = JSON.parse(JSON.stringify(baseLinks));
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -16,7 +16,7 @@ module.exports = {
         .setTitle('State Approved Meme')
         .setColor('DE2910')
         .setDescription(`Here is a state approved meme for you, ${interaction.user.username}`)
-        .setThumbnail('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTCQ239dDx27JAGoiCRZIKhFLhwPaI1CIi5gaETen9N2bzal2IU3xPaDpfzAA41ixZFDA:https://upload.wikimedia.org/wikipedia/commons/e/e8/Mao_Zedong_portrait.jpg&usqp=CAU')
+        .setThumbnail(memeLinks.mao)
         .setImage(memeLinks.links[rnd])
 
       interaction.reply({embeds: [response]});

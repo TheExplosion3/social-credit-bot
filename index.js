@@ -4,10 +4,18 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
-const sc = require('./sc.js')
-const Sequelize = require('sequelize');
 const express = require('express');
 const token = process.env['token'];
+const Sequelize = require('sequelize');
+
+const sequelize = new Sequelize('username', 'id', 'socialcredit', {
+	host: 'localhost',
+	dialect: 'sqlite',
+	logging: false,
+	storage: 'db/database.sqlite',
+});
+
+const sc = require('../sc.js')(sequelize);
 
 //---------------------------------------------------------------------------\\
 
@@ -46,7 +54,7 @@ for (const file of eventFiles) {
 	const event = require(filePath);
 	if (event.once) {
 		client.once(event.name, (...args) => event.execute(...args));
-	} 
+	}
   else {
 		client.on(event.name, (...args) => event.execute(...args));
 	}
