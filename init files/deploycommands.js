@@ -8,11 +8,11 @@ const token = process.env['token'];
 
 const commands = [
 	new SlashCommandBuilder()
-    .setName('ping') 
-    .setDescription('Replies with pong!'),
+    .setName('randomeme') 
+    .setDescription('Replies with a random state approved meme, straight from the Glorious CCP'),
 	new SlashCommandBuilder()
     .setName('userinfo')
-    .setDescription('Replies with user\' a users social credit'),
+    .setDescription('Replies with a user\'s social credit'),
   new SlashCommandBuilder()
     .setName('initialize')
     .setDescription('Initializes the bot\'s database for CCP use. (Only usable by creator)')

@@ -36,6 +36,7 @@ module.exports = {
 
     let maoResponse;
 
+    // dunno why i put this in hex, i sorta just felt like it.
     if(userSc >= 0x0) {
       maoResponse = phrases.get(0);
     }
