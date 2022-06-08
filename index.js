@@ -15,7 +15,7 @@ const sequelize = new Sequelize('username', 'id', 'socialcredit', {
 	storage: 'db/database.sqlite',
 });
 
-const sc = require('../sc.js')(sequelize);
+const sc = require('./sc.js')(sequelize);
 
 //---------------------------------------------------------------------------\\
 
