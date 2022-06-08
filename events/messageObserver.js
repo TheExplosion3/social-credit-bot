@@ -7,16 +7,17 @@ module.exports = {
     const observerPromise = new Promise((resolve, reject) => {
       observer()
         .then(_result => {
-        resolve();
+          resolve();
       })
         .catch((error) => {
-        reject();
+          console.log(`Observer error occurred, dumping error below:\n${error}`)
+          reject();
       })
     }).then(_result => {
       console.log('Observer process successfully finished.')
     });
-    observerPromise.catch((error) => {
-      console.log(`Observer process failed, error passed below:\n${error}`);
+    observerPromise.catch((onRejected) => {
+      console.log('Observer process failed');
     })
   }
 }
