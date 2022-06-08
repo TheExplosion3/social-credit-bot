@@ -59,7 +59,7 @@ const modifierregex = /\\b(Glor((y|ious(ness)?)){1})|\b(Great(s|less(ness)?|ness
 
 //----------------------------------------------------------------------------\\
 
-function observer() {
+async function observer() {
   
   const filter = msg => msg.content.includes('');
   const collector = interaction.channel.createMessageCollector({ filter, time: 15000 });
