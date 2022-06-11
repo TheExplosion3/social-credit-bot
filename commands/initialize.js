@@ -43,12 +43,12 @@ module.exports = {
         thats just how bad it is kek
       */
 
-      const p = new Promise((resolve, reject) => {
+      const pI = new Promise((resolve, reject) => {
         for(const mId of memberIDs) {
 
           sqlid = sc.findOne({ where: { id: mId } });
 
-          sqlid.then(response => {
+          pII = sqlid.then(response => {
 
             sqlid = response;
             if(sqlid === null || sqlid === undefined) {
@@ -68,7 +68,7 @@ module.exports = {
                 if(complete.includes(newMemberId) === false) {
                   let scId = sc.findOne({ where: { id: newMemberId } });
 
-                  scId.then(response => {
+                  pIII = scId.then(response => {
 
                     scId = response;
                     // this doesnt work for some reason, it can't find the user id or user tag. dunno why.
@@ -105,7 +105,9 @@ module.exports = {
           });
           idx++;
         };
-      }).then(_result => {
+      })
+      const promises = [pI, pII, pIII]
+      Promise.allSettled(promises).then((_results) => {
         if(!isAdmin) {
           interaction.reply('Admin Priviliges Not Found, Deducting Social Credit...');
           fn.sc_change(false, defSC, interaction.user.id);
