@@ -30,6 +30,7 @@ module.exports = {
 		.setDescription('Replies with a user\'s social credit.'),
   async execute(interaction) {
 
+    const memeLinks = links;
     const avatarUrl = interaction.user.displayAvatarURL();
     let maoResponse;
     let name = interaction.user.username;
