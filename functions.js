@@ -13,6 +13,7 @@ const sequelize = new Sequelize('username', 'id', 'socialcredit', {
 const sc = require('./sc.js')(sequelize);
 
 //----------------------------------------------------------------------------\\
+// str iteration
 
 // for use in observer() function
 function striterator(input, arr, ctr) {
@@ -26,6 +27,7 @@ function striterator(input, arr, ctr) {
 }
 
 //----------------------------------------------------------------------------\\
+// constants
 
 // stuff for observer (i dont feel like wasting memory by having it be redefined every time the function is called)
 const raiser = 500;
@@ -39,6 +41,7 @@ const negregex = /\b((?! ?of)(\3 ?Of ?\4)|((The)? ?United ?States)|(America(n?s?
 const modifierregex = /\\b(Glor((y|ious(ness)?)){1})|\b(Great(s|less(ness)?|ness)?)|\b((All ?-? ?)?(Power((less|ful)?(ness)?)))\b|\b(Wonderful)|\b((Unweak(e(r|n(ed|ings?){1}){1})?)|(Weak(lings?|e(ned|r|nings?){1}|ness(es)?)?))|\b((Un)?Smart(ness)?)|\b((Un)?Intellig(ences?|ents?)?)|\b((Un)?Wise(r|ly|ness)?)|\b(Stupids?(ity|ness)?)|\b(Horrible(s|ness)?)|\b(Idiot(ic|s)?)|\b(Bussing?s?)|\b(Clown(s|ing?)?)|\b(Poor(ness|er)?)|\b(Fail(s|ed|ings?|ures?)?)|\b(Los(s(es)?|t|ing|ers?){1})|\b(Belie(fs?|v(ing|es?)))|\b(Fault(s|ed)?)|\b(Pig(ness|s)?)|\b(Commie(s|ness)?)|\b(Bastard(ness|s)?)|\b(Lower(eds?|ness|s)?)|\b(Upper(s|ness|eds?)?)/gi;
 
 //----------------------------------------------------------------------------\\
+// sc change
 
 // changes the amount of social credit in the database, according to whether or not its pos or neg via pm, its change value as amt, and the id in the database as id.
 const sc_change = (pm, amt, id) => {
@@ -57,6 +60,7 @@ const sc_change = (pm, amt, id) => {
 }
 
 //----------------------------------------------------------------------------\\
+// observer
 
 const observer = async () => {
 
@@ -103,7 +107,8 @@ const observer = async () => {
                 /*
                   142.927 is the y val of 500 for the exp, + 500 raises it by 500. im using ln because i dont feel like using change of base equation, so yeah. it also just works well enough.
                   equations: y1 = rnd((1.04^x)/1-log e)
-                            y2 = rnd(ln(y1 - 142.927) + 500)
+                                and if y1 >= 500,
+                             y2 = rnd(ln(y1 - 142.927) + 500)
                 */
                 newVal = Math.round(Math.log(newVal - logInt) + raiser);
               }
@@ -137,6 +142,7 @@ const observer = async () => {
 }
 
 //----------------------------------------------------------------------------\\
+// exports
 
 module.export = {
   observer,

@@ -2,7 +2,7 @@ const baseLinks = require('../json/memelinks.json');
 const { MessageEmbed } = require('discord.js');
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const Sequelize = require('sequelize');
-const links = JSON.parse(JSON.stringify(baseLinks))
+const links = JSON.parse(JSON.stringify(baseLinks));
 
 const sequelize = new Sequelize('username', 'id', 'socialcredit', {
 	host: 'localhost',
@@ -59,7 +59,7 @@ module.exports = {
         maoResponse = phrases.get(5);
       }
       else if(userSc >= 0x88b9 && userSc <= 0x16e35f) {
-        maoRespone = phrases.get(6)
+        maoRespone = phrases.get(6);
       }
       else {
         maoResponse = phrases.get(7);
@@ -101,7 +101,7 @@ module.exports = {
         interaction.reply({embeds: [response]});
         }
       catch(error) {
-        console.log(`error encountered in embed creation, passing. error log below: \n${error}`)
+        console.log(`error encountered in embed creation, passing. error log below: \n${error}`);
         interaction.reply({ content: 'An error has occured comrade! Contact an admin for fixing this horrible issue, delaying the glorious progress of the CCP.', ephemeral: true });
       }
     });

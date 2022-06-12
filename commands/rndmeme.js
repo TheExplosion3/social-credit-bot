@@ -22,7 +22,7 @@ module.exports = {
       interaction.reply({embeds: [response]});
     }
     catch(error) {
-      console.log(`error encountered in embed creation, passing. error log below: \n${error}`)
+      console.log(`error encountered in embed creation, passing. error log below: \n${error}`);
       interaction.reply({ content: 'An error has occured comrade! Contact an admin for fixing this horrible issue, delaying the glorious progress of the CCP..jpg', ephemeral: true });
     }
 	},

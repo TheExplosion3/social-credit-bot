@@ -18,6 +18,7 @@ const sequelize = new Sequelize('username', 'id', 'socialcredit', {
 const sc = require('./sc.js')(sequelize);
 
 //---------------------------------------------------------------------------\\
+// express server
 
 // webserver code
 const app = express();
@@ -28,6 +29,7 @@ app.get('/', (req, res) => res.send(`<p style="color:8650ac;"><strong>Social Cre
 app.listen(port, () => console.log(`Listening at http://localhost:${port}`));
 
 //----------------------------------------------------------------------------\\
+// client creation
 
 // Create a new client instance
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MEMBERS] });
@@ -45,6 +47,7 @@ for(const file of commandFiles) {
 }
 
 //----------------------------------------------------------------------------\\
+// event intialization
 
 const eventsPath = path.join(__dirname, 'events');
 const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'));
@@ -61,6 +64,7 @@ for (const file of eventFiles) {
 }
 
 //----------------------------------------------------------------------------\\
+// login
 
 // Login to Discord with token
 client.login(token);
