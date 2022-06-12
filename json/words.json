@@ -24,7 +24,9 @@
     "commie": -10,
     "bastard": -10,
     "lower": -10,
-    "upper": 10
+    "upper": 10,
+    "lesser": -15,
+    "greater": 15
   },
   "wordscore": 5
 }
