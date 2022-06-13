@@ -5,18 +5,18 @@ cd ~/social-credit-bot-haha/shfiles
 
 case $CHOICE in
 
-    c | C)
-        ./c.sh
-    ;;
+  c | C)
+    ./c.sh
+  ;;
 
-    d | D)
-        ./d.sh
-    ;;
+  d | D)
+    ./d.sh
+  ;;
 
-    **)
+  **)
     echo -e "invalid input"
     exit
-    ;;
+  ;;
 
 esac
 
