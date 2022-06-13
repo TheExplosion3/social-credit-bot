@@ -95,7 +95,10 @@ module.exports = {
                       }
                       complete.push(newMemberId);
                     }
-                  });
+                  })
+                  pIII.catch((onRejected) => {
+                    console.log(`pIII failed, rejection reason listed below: ${onRejected}`);
+                  })
                 }
               };
             }
@@ -103,8 +106,14 @@ module.exports = {
               isAdmin = false;
             }
           });
+          pII.catch((onRejected) => {
+            console.log(`pII failed, rejection reason listed below: ${onRejected}`);
+          })
           idx++;
         };
+      })
+      pI.catch((onRejected) => {
+        console.log(`Promise I rejected, rejection reason listed below: ${onRejected}`);
       })
       const promises = [pI, pII, pIII]
       Promise.allSettled(promises).then((_results) => {

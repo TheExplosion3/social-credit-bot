@@ -1,8 +1,10 @@
+echo -e "initializing db..."
 echo -e "\nreset db? y/n/b(exit)\n"
-read input
+read INPUT
 
-if [[ $input == 'y' || $input == 'Y' ]]
+if [[ $INPUT == 'y' || $INPUT == 'Y' ]]
 then
+
   echo -e "\nreseting db..."
 
   cd ~/social-credit-bot-haha/db
@@ -10,7 +12,8 @@ then
   cd ~/social-credit-bot-haha
 
   echo "db was reset successfully"
-elif [[ $input == 'b' || $input == 'B' ]]
+
+elif [[ $INPUT == 'b' || $INPUT == 'B' ]]
 then
 
   echo -e "\nprocess canceled\n"

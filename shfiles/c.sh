@@ -1,8 +1,9 @@
 echo "deploying comands..."
 echo -e "\nare you sure? y/n\n"
 
-read input
-if [[ $input == 'n' || $input == 'N' ]]
+read INPUT
+
+if [[ $INPUT == 'n' || $INPUT == 'N' ]]
 then
   echo -e "\nprocess canceled\n"
   exit
